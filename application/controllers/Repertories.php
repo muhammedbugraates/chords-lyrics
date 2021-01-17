@@ -6,7 +6,12 @@ class Repertories extends CI_Controller
     {
         $data['title'] = 'All Repertories';
 
-        $data['repertories'] = $this->repertory_model->get_repertories_count();
+        if ($this->user_model->check_user_admin()) {
+            $data['repertories'] = $this->repertory_model->get_repertories_count();
+        }else{
+            $data['repertories'] = $this->repertory_model->get_repertories_count_public();
+        }
+        
         $data['my_repertories'] = $this->repertory_model->get_my_repertories_count();
 
         $this->load->view('templates/header');

@@ -16,6 +16,13 @@ class Repertory_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_repertories_count_public()
+    {
+        $this->db->order_by('name');
+        $query = $this->db->get('repertories_count_public');
+        return $query->result_array();
+    }
+
     // Get all repertories that belongs to a user to add song
     public function get_my_repertories_for_song($id)
     {

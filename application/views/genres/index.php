@@ -1,4 +1,5 @@
 <h2><?= $title; ?></h2>
+<hr>
 <ul class="list-group">
     <?php foreach ($genres as $genre) : ?>
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -12,8 +13,8 @@
             </div>
             <div class="float-right">
                 <?php if ($this->user_model->check_user_admin() && $genre['id'] != 1) : ?>
-                    <form class="artist-delete" action="genres/delete/<?php echo $genre['id']; ?>" method="POST">
-                        <input type="submit" class="btn btn-link text-danger" value="[X]">
+                    <form action="<?php echo base_url('genres/delete/' . $genre['id']); ?>">
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                     </form>
                 <?php endif; ?>
             </div>

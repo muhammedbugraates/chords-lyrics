@@ -1,4 +1,5 @@
 <h2><?= $title; ?></h2>
+<hr>
 <ul class="list-group">
     <?php if ($songs) : ?>
         <?php foreach ($songs as $song) : ?>
@@ -10,8 +11,8 @@
                 </div>
                 <div class="float-right">
                     <?php if ($this->user_model->check_user_admin()) : ?>
-                        <form class="artist-delete" action="songs/delete/<?php echo $song['id']; ?>" method="POST">
-                            <input type="submit" class="btn btn-link text-danger" value="[X]">
+                        <form action="<?php echo base_url('songs/delete/' . $song['id']); ?>">
+                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </form>
                     <?php endif; ?>
                 </div>
