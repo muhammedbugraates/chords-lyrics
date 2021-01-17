@@ -6,12 +6,19 @@ class Songs extends CI_Controller
     {
         $data['title'] = 'Songs';
 
-        $data['songs'] = $this->song_model->get_songs();
+        if (strlen($this->input->get('key')) < 1) {
+            $data['songs'] = $this->song_model->get_songs();
+            $data['key'] = '';
+        } else {
+            $data['songs'] = $this->song_model->get_songs_search($this->input->get('key'));
+            $data['key'] = $this->input->get('key');
+        }
 
         $this->load->view('templates/header');
         $this->load->view('songs/index', $data);
         $this->load->view('templates/footer');
     }
+
 
     public function view($id)
     {
@@ -58,9 +65,10 @@ class Songs extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function update(){
+    public function update()
+    {
         // Check login
-        if(!$this->session->userdata('logged_in')){
+        if (!$this->session->userdata('logged_in')) {
             redirect('users/login');
         }
 

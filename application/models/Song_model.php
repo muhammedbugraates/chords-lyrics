@@ -9,6 +9,14 @@ class Song_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_songs_search($key)
+    {
+        $this->db->order_by('name');
+        $this->db->like('name', $key);
+        $query = $this->db->get('songs');
+        return $query->result_array();
+    }
+
     // Get all songs
     public function get_all_songs_of_artist($id)
     {
@@ -17,16 +25,17 @@ class Song_model extends CI_Model
         return $query->result_array();
     }
 
-     // Get all songs
-     public function get_songs_of_genre($id)
-     {
-         $this->db->order_by('name');
-         $query = $this->db->get_where('songs', array('genre_id' => $id));
-         return $query->result_array();
-     }
+    // Get all songs
+    public function get_songs_of_genre($id)
+    {
+        $this->db->order_by('name');
+        $query = $this->db->get_where('songs', array('genre_id' => $id));
+        return $query->result_array();
+    }
 
     // Get one song with id
-    public function get_song($id){
+    public function get_song($id)
+    {
         $query = $this->db->get_where('songs', array('id' => $id));
         return $query->row_array();
     }
@@ -43,7 +52,8 @@ class Song_model extends CI_Model
         return $this->db->insert('songs', $data);
     }
 
-    public function update_song(){
+    public function update_song()
+    {
 
         $data = [
             'name' => $this->input->post('name'),
@@ -63,7 +73,8 @@ class Song_model extends CI_Model
         return true;
     }
 
-    public function remove_artist_from_songs($id){
+    public function remove_artist_from_songs($id)
+    {
         $data = [
             'artist_id' => 1
         ];
@@ -72,7 +83,8 @@ class Song_model extends CI_Model
         return $this->db->update('songs', $data);
     }
 
-    public function remove_genre_from_songs($id){
+    public function remove_genre_from_songs($id)
+    {
         $data = [
             'genre_id' => 1
         ];
