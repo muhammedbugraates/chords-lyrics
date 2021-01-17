@@ -1,11 +1,13 @@
-<h2><?= $title; ?></h2>
+<h2 class="artist-delete"><i class="fa fa-chart-pie"></i></h2>
+<h2 class="artist-delete"><?php echo str_repeat('&nbsp;', 2); ?><?= $title; ?></h2>
 <hr>
 <ul class="list-group">
     <?php if ($songs) : ?>
         <?php foreach ($songs as $song) : ?>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <div class="float-left">
-                    <a class="nav-link" href="<?php echo base_url(); ?>songs/<?php echo $song['id']; ?>">
+                    <h4 class="artist-delete"><i class="fa fa-music"></i></h4>
+                    <a class="nav-link artist-delete" href="<?php echo base_url(); ?>songs/<?php echo $song['id']; ?>">
                         <?php echo $song['name']; ?>
                     </a>
                 </div>

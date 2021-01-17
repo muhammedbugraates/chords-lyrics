@@ -1,4 +1,6 @@
-<h2><?= $title; ?></h2>
+<h2 class="artist-delete"><i class="fa fa-folder"></i></h2>
+<h2 class="artist-delete"><?php echo str_repeat('&nbsp;', 2); ?><?= $title; ?></h2>
+<hr>
 
 <?php echo validation_errors(); ?>
 

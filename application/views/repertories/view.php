@@ -1,11 +1,13 @@
-<h2><?= $title; ?></h2>
+<h2 class="artist-delete"><i class="fa fa-folder"></i></h2>
+<h2 class="artist-delete"><?php echo str_repeat('&nbsp;', 2); ?><?= $title; ?></h2>
 <hr>
 <ul class="list-group">
     <?php if ($songs) : ?>
         <?php foreach ($songs as $song) : ?>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <div class="float-left">
-                    <a class="nav-link" href="<?php echo base_url(); ?>songs/<?php echo $song['id']; ?>">
+                    <h4 class="artist-delete"><i class="fa fa-music"></i></h4>
+                    <a class="nav-link artist-delete" href="<?php echo base_url(); ?>songs/<?php echo $song['id']; ?>">
                         <?php echo $song['name']; ?>
                     </a>
                 </div>
@@ -14,7 +16,7 @@
                         <form class="artist-delete" action="<?php echo base_url(); ?>repertories/remove_song_from_repertory" method="POST">
                             <input type="hidden" name="repertory_id" value="<?php echo $repertory['id']; ?>">
                             <input type="hidden" name="song_id" value="<?php echo $song['id']; ?>">
-                            <input type="submit" class="btn btn-link text-danger" value="[X]">
+                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </form>
                     <?php endif; ?>
                 </div>

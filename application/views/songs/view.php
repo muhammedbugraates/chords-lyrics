@@ -1,4 +1,5 @@
-<h2><?php echo $song['name']; ?></h2>
+<h2 class="artist-delete"><i class="fa fa-music"></i></h2>
+<h2 class="artist-delete"><?php echo str_repeat('&nbsp;', 2); ?><?php echo $song['name']; ?></h2>
 <hr>
 <div class="post-body">
 	<?php echo $song['lyrics']; ?>

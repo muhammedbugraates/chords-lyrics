@@ -1,3 +1,8 @@
+<div class="container mb-3 text-center">
+    <h3><i class="fa fa-folder fa-3x"></i></h3>
+    <h2 class="text-center d-flex justify-content-center"><?php echo "Repertories"; ?></h2>
+</div>
+
 <?php if ($this->session->userdata('logged_in')) : ?>
     <h2>My Repertories</h2>
     <hr>
@@ -6,7 +11,8 @@
             <?php foreach ($my_repertories as $repertory) : ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div class=" float-left">
-                        <a class="nav-link " href="<?php echo base_url(); ?>repertories/<?php echo $repertory['id']; ?>">
+                        <h4 class="artist-delete"><i class="fa fa-folder"></i></h4>
+                        <a class="nav-link artist-delete" href="<?php echo base_url(); ?>repertories/<?php echo $repertory['id']; ?>">
                             <?php echo $repertory['name'] . str_repeat('&nbsp;', 5); ?>
                             <span class=" badge badge-primary badge-pill">
                                 <?php echo $repertory['count']; ?>
@@ -39,7 +45,8 @@
             <?php if ($this->user_model->check_user_admin() || $repertory['privacy'] == '0') : ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div class=" float-left">
-                        <a class="nav-link " href="<?php echo base_url(); ?>repertories/<?php echo $repertory['id']; ?>">
+                        <h4 class="artist-delete"><i class="fa fa-folder"></i></h4>
+                        <a class="nav-link artist-delete" href="<?php echo base_url(); ?>repertories/<?php echo $repertory['id']; ?>">
                             <?php echo $repertory['name'] . str_repeat('&nbsp;', 5); ?>
                             <span class=" badge badge-primary badge-pill">
                                 <?php echo $repertory['count']; ?>
